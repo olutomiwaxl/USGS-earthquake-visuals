@@ -4,9 +4,10 @@
 
  d3.json(queryUrl, function(data) {
   //send the data.features object to the createFeatures function
-  console.log(data.features)
+ //var magnitude = features.properties.mag
     createFeatures(data.features);
   });
+
 
   function createFeatures(earthquakeData) {
 
@@ -14,9 +15,21 @@
       layer.bindPopup("<h3>" + feature.properties.place + " " + feature.properties.mag +
         "</h3><hr><p>" + new Date(feature.properties.time) + "</p>");
     }
-  
+    
+    var geojsonMarkerOptions = {
+        radius: 8,
+        fillColor: "#ff7800",
+        color: "#000",
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.8
+    };
+    function pointToLayer(feature, latlng) {
+      return L.circleMarker(latlng, geojsonMarkerOptions);
+  }
     var earthquakes = L.geoJSON(earthquakeData, {
-      onEachFeature: onEachFeature
+      onEachFeature: onEachFeature,
+      pointToLayer: pointToLayer
     });
   
     // Sending the earthquakes layer to the createMap function
@@ -40,13 +53,13 @@
       accessToken: API_KEY
     });
   
-    // Define a baseMaps object to hold the base layers
+    // baseMaps object to hold the base layers
     var baseMaps = {
       "Street Map": streetmap,
       "Dark Map": darkmap
     };
   
-    // Create overlay object to hold the overlay layer
+    //  overlay object to hold the overlay layer
     var overlayMaps = {
       Earthquakes: earthquakes
     };
