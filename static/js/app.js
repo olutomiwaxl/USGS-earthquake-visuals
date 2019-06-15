@@ -2,19 +2,26 @@
  // bring in the JSON
  var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson" 
 
+
+
+
+
  d3.json(queryUrl, function(data) {
   //send the data.features object to the createFeatures function
- //var magnitude = features.properties.mag
+ 
     createFeatures(data.features);
   });
-
-
+  function markerSize(mag) {
+    return mag * 40;
+  }
+  var mag= features.properties.mag
   function createFeatures(earthquakeData) {
 
     function onEachFeature(feature, layer) {
       layer.bindPopup("<h3>" + feature.properties.place + " " + feature.properties.mag +
         "</h3><hr><p>" + new Date(feature.properties.time) + "</p>");
     }
+    
     
     var geojsonMarkerOptions = {
         radius: 8,
