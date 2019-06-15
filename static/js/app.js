@@ -112,5 +112,28 @@ function fillColor(magnitude) {
     L.control.layers(baseMaps, overlayMaps, {
       collapsed: false
     }).addTo(myMap);
+      // add legend
+  var legend = L.control({ position: 'bottomright' });
+  legend.onAdd = function (map) {
+  
+    var div = L.DomUtil.create('div', 'info legend');
+    labels = ['<strong>Magnitude</strong>'],
+      magnitudes = ['0-1', '1-2', '2-3', '3-4', '4-5', '5+'];
+  
+    div.innerHTML +=
+      labels.push(
+        '<i class="square" style="background:' + "red" + '"></i> ' +
+        '<p style="background-color:#00FF00;">' + magnitudes[0] + '</p>' +
+        '<p style="background-color:#6AFF00;">' + magnitudes[1] + '</p>' +
+        '<p style="background-color:#D4FF00;">' + magnitudes[2] + '</p>' +
+        '<p style="background-color:#FFC100;">' + magnitudes[3] + '</p>' +
+        '<p style="background-color:#FF5700;">' + magnitudes[4] + '</p>' +
+        '<p style="background-color:#FF0000;">' + magnitudes[5] + '</p>');
+  
+    div.innerHTML = labels.join('<br>');
+    return div;
+  };
+  legend.addTo(myMap);
   }
+  
   
