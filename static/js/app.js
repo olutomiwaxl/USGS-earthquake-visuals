@@ -9,13 +9,13 @@ function fillColor(magnitude) {
     color = "#00FF00"; // green
   }
   else if (magnitude < 2) {
-    color = "#6AFF00"
+    color = "#7FFF00"
   }
   else if (magnitude < 3) {
-    color = "#D4FF00"
+    color = "#FFFF00"
   }
   else if (magnitude < 4) {
-    color = "#FFC100"
+    color = "#FFF000"
   }
   else if (magnitude < 5) {
     color = "#FF5700"
@@ -124,9 +124,9 @@ function fillColor(magnitude) {
       labels.push(
         '<i class="square" style="background:' + "red" + '"></i> ' +
         '<p style="background-color:#00FF00;">' + magnitudes[0] + '</p>' +
-        '<p style="background-color:#6AFF00;">' + magnitudes[1] + '</p>' +
-        '<p style="background-color:#D4FF00;">' + magnitudes[2] + '</p>' +
-        '<p style="background-color:#FFC100;">' + magnitudes[3] + '</p>' +
+        '<p style="background-color:#7FFF00;">' + magnitudes[1] + '</p>' +
+        '<p style="background-color:#FFFF00;">' + magnitudes[2] + '</p>' +
+        '<p style="background-color:#FFF000;">' + magnitudes[3] + '</p>' +
         '<p style="background-color:#FF5700;">' + magnitudes[4] + '</p>' +
         '<p style="background-color:#FF0000;">' + magnitudes[5] + '</p>');
   
